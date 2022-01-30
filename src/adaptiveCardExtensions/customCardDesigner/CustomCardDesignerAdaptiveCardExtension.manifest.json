@@ -1,0 +1,105 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/spfx/client-side-web-part-manifest.schema.json",
+  "id": "b459d25c-cb01-45f3-a335-e75d8573f438",
+  "alias": "CustomCardDesignerAdaptiveCardExtension",
+  "componentType": "AdaptiveCardExtension",
+
+  // The "*" signifies that the version should be taken from the package.json
+  "version": "*",
+  "manifestVersion": 2,
+
+  // If true, the component can only be installed on sites where Custom Script is allowed.
+  // Components that allow authors to embed arbitrary script code should set this to true.
+  // https://support.office.com/en-us/article/Turn-scripting-capabilities-on-or-off-1f2c515f-5d7e-448a-9fd7-835da935584f
+  "requiresCustomScript": false,
+  "supportedHosts": ["Dashboard"],
+  "supportsThemeVariants": true,
+  "preconfiguredEntries": [
+    {
+      "groupId": "bd067b1e-3ad5-4d5d-a5fe-505f07d7f59c", // Dashboard
+      "group": { "default": "Dashboard" },
+      "title": { "default": "Custom card designer" },
+      "description": { "default": "Design a Viva Connections dashboard card with a quick view using available templates." },
+      "officeFabricIconFontName": "GiftCard",
+      "properties": {
+        "templateType": "primaryText",
+        "cardIconSourceType": 2,
+        "cardImageSourceType": 1,
+        "cardSelectionAction": {
+          "type": "ExternalLink",
+          "parameters": {
+            "target": "https://adaptivecards.io/",
+            "view": "CustomCardDesigner_QUICK_VIEW"
+          }
+        },
+        "numberCardButtonActions": 1,
+        "cardButtonActions": [
+          {
+            "title": "Button",
+            "style": "positive",
+            "action": {
+              "type": "ExternalLink",
+              "parameters": {
+                "target": "https://adaptivecards.io/",
+                "view": "CustomCardDesigner_QUICK_VIEW"
+              }
+            },
+            "isVisible": true
+          },
+          {
+            "title": "Button",
+            "style": "default",
+            "action": {
+              "type": "QuickView",
+              "parameters": {
+                "view": "CustomCardDesigner_QUICK_VIEW"
+              }
+            },
+            "isVisible": true
+          }
+        ],
+        "quickViews": [
+          {
+            "data": "{\n  \"Url\": \"http://adaptivecards.io/schemas/adaptive-card.json\",\n  \"Text\": \"Hello, World!\"\n}",
+            "template": "{\n  \"type\": \"AdaptiveCard\",\n  \"body\": [\n    {\n      \"type\": \"TextBlock\",\n      \"size\": \"Medium\",\n      \"weight\": \"Bolder\",\n      \"text\": \"${Text}\",\n      \"wrap\": true\n    }\n  ],\n  \"actions\": [\n    {\n      \"type\": \"Action.OpenUrl\",\n      \"title\": \"View\",\n      \"url\": \"${Url}\"\n    }\n  ],\n  \"$schema\": \"http://adaptivecards.io/schemas/adaptive-card.json\",\n  \"version\": \"1.2\"\n}",
+            "id": "CustomCardDesigner_QUICK_VIEW",
+            "displayName": "Default Quick View"
+          }
+        ],
+        "isQuickViewConfigured": false,
+        "currentQuickViewIndex": 0,
+        "dataType": "Static",
+        "spRequestUrl": "",
+        "graphRequestUrl": "",
+        "title": "Card designer",
+        "primaryText": "Heading",
+        "description": "Description text",
+        "iconProperty": "",
+        "iconPicker": "chat",
+        "imagePicker": "",
+        "_dynamicProperties": {
+          "schema": [
+            {
+              "uniqueId": "862d96bd-18af-4c9b-942f-368c9b825f32",
+              "targetProperty": "Text",
+              "label": "Text",
+              "type": "PropertyPaneTextFieldMulti",
+              "sortIdx": 1
+            },
+            {
+              "uniqueId": "1a37bf73-da20-4770-b6ad-90ca02c08023",
+              "targetProperty": "Url",
+              "label": "Url",
+              "type": "PropertyPaneTextField",
+              "sortIdx": 2
+            }
+          ],
+          "values": {
+            "Url": "http://adaptivecards.io/schemas/adaptive-card.json",
+            "Text": "Hello, World!"
+          }
+        }
+      }
+    }
+  ]
+}
